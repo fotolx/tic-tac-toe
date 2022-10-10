@@ -50,19 +50,21 @@ def check_win(who='x'):
         if main_diag[i] == who:
             counter += 1
     if counter == size:
-       diagonal_main=True
+        diagonal_main = True
 
     counter = 0
     for i in range(size):
         if second_diag[i] == who:
             counter += 1
     if counter == size:
-        diagonal_second=True
+        diagonal_second = True
 
     if any(cols) or any(rows) or diagonal_main or diagonal_second:
         if who == 'x':
+            print_field()
             print('You Win!')
         else:
+            print_field()
             print('AI Wins!')
         exit(0)
 
@@ -84,16 +86,20 @@ def has_move():
 
 
 random.seed()
-print_field()
-# while(True):
-for i in range(10):
-    x, y = map(int, input('Сделайте ход, укажите координаты через пробел:').split())
-    if field[x][y] == '-':
-        field[x][y] = 'x'
-    else:
-        print('Клетка занята')
-        continue
+while (True):
+    print_field()
+    while (True):
+        try:
+            x, y = map(int, input('Сделайте ход, укажите координаты через пробел:').split())
+            if field[x][y] == '-':
+                field[x][y] = 'x'
+            else:
+                print('Клетка занята')
+                continue
+        except:
+            continue
+        else:
+            break
     check_win()
     ai()
     check_win('o')
-    print_field()
