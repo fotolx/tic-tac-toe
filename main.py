@@ -91,6 +91,7 @@ while (True):
     while (True):
         try:
             x, y = map(int, input('Сделайте ход, укажите координаты через пробел:').split())
+            if x<0 or y <0: continue
             if field[x][y] == '-':
                 field[x][y] = 'x'
             else:
